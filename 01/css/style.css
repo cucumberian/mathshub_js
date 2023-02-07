@@ -1,0 +1,27 @@
+img {
+    width: 300px;
+    margin: 10px auto;
+    display: block;
+}
+
+span {
+    font-size: 15px;
+}
+
+span.name {
+    color: red;
+}
+
+#skill {
+    color: green;
+}
+
+h1 {
+    padding: 0px;
+    margin: 30px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
