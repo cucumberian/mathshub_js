@@ -50,4 +50,11 @@ nav > a {
 div.about_us {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.about_us img {
+    border: 2px dotted black;
+    width: 300px;
+
 }

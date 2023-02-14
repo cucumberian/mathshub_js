@@ -34,6 +34,15 @@
 - `alt` - для задания текста, который будет отображен вместо картинки, если она не загрузилась (альтернативный текст)
 - `title` - всплывающая подсказка, которая появляется при наведении курсора на картинку
 - `width` - ширина элемента
+Очень хорошие совства для ширины:
+```css
+div {
+    width: max_content; /* штирина по длине всех элементов */
+    width: min-content; /* ширина самого длинного слова */
+    width: 50%; /* ширина по родительскому элементу */
+    height: inherit; /* высота наследуется у родительского элемента */
+}
+```
 
 
 #### CSS стили
@@ -101,8 +110,196 @@
 - width
 - title
 
+6) Какого способа подключения CSS не существует?
+- * exline
+- inline
+- external
+- internal
+
+7) Какой тег подключает внешний CSS файл?
+- * link
+- href
+- meta
+- style
+
+8) Какой из этих тегов строчный?
+- * span
+- h3
+- p
+- h6
+
+9) Какой атрибут тега script указывает путь к файлу?
+- * src
+- path
+- href
+- link
+
+10) Что из этого вызывает модальное окно с сообщением?
+- * alert
+- alarm
+- warning
+- error
+
+
+
+## 2. Типы данных в JS
 
 
 
 
+### Типы данных
 
+### Семантика сайта и его структура
+В мире где есть поиковые роботы очень важно чтобы вой сайт находили, поэтому его семантика очень важна.
+##### header
+##### main
+##### footer
+##### nav
+##### section
+ 
+Блок `div` не несёт семантического смысла, он просто говорит что это отдельный блок кода.
+
+
+### Тест 2
+
+1) "342" + 12 ?
+- * "34212"
+- 354
+- NaN
+- error
+
+2) 576 / "8" ?
+- * 72
+- NaN
+- "72"
+- "576/8"
+
+3) В какой тег поместить основной контент сайта?
+
+- main
+- head
+- header
+- content
+
+
+## Урок 3. Базовые и логические операторы. Циклы и функции.
+### [youtube](https://www.youtube.com/watch?v=KHLFTTA4KFc)
+
+`=` - оператор присваивания 
+`==` - нестрогое сравнение с риведением типов. Приведение типов всегда идёт в сторону строк или булевых значений.
+```js
+console.log(5 == "5"); // true
+```
+`===` - строгое сравнение.
+```js
+console.log(5 === "5"); //false
+```
+
+```js
+console.log("abc" > 15); // false, приводится к строке и символы сравниваются по коду
+```
+
+```js
+console.log(null == 0); // false
+console.log(null < 0);  // false
+console.log(null > 0); // false
+console.log(null >= 0); // true
+console.log(null <= 0); //true
+```
+
+```js
+console.log(undefined == false);    // false
+console.log(undefined < 0);         // false
+console.log(undefined == 0);        // false
+console.log(undefined <= 0);        // false
+```
+
+```js
+console.log(typeof("15"));
+console.log(Number("15"));
+console.log(String(15)); // перевод в строку
+console.log(15 + ""); // перевод числа в строку
+console.log(Boolean(15));   // true
+console.log(Boolean(0));    // false
+console.log(Boolean(-15));  // true
+console.log(+"15"); // унарный оператор перевода строку в число
+console.log(+"-15");
+```
+
+```js
+console.log(Boolean("")); //false
+console.log(Boolean(" ")); // true
+
+console.log(Boolean(null)); // false
+console.log(!!15);  // быстрый перевод в boolean
+```
+
+`||` - логическое ИЛИ - возвращает первое правдивое
+`&&` - логическое И - возвращает первое ложное
+
+
+#### Условный оператор `if`
+```js
+if (boolean_condition) {
+    //
+} 
+else if (bool_condition) {
+    //
+} 
+else {
+    //
+}
+```
+
+#### Цикл `while`
+Цикл с предусловием
+```js
+while (condition) {
+    // do while condition is true
+}
+```
+Цикл с постусловием - выполняется хотя бы раз
+```js
+do {
+    // run and checker for condition is true
+} while (condition)
+```
+
+#### Цикл for
+```js
+for (let i = 0; loop_condition; loop_step) {
+    // repeated while loop_condition is true
+}
+```
+
+```js
+let arr = [1, 3, 5, 7, 11];
+for (let i in arr) {
+    console.log(i); // в i хранится индекс массива
+}
+
+for (let i of arr) {
+    console.log(i);    // в i хранится сам элемент массива
+}
+```
+Проход по свойствам объекта
+```js
+const obj = {
+    'name': 'Sasha', 
+    'age': 25,
+    'city': 'Voronej'
+}
+
+for (key in obj) {
+    console.log(key, obj[key]);
+}
+```
+
+#### Тэг `input`
+Важно изменять тип тэга инпут, на соотвествующий, т.к. анпример, на мобильном устройстве соответственно изменяется клавиатура.
+
+### Полезные ссылки
+1) [codewars](https://www.codewars.com)
+2) [codingame](https://www.codingame.com/start)
+
+### Test 3

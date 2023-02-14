@@ -50,4 +50,20 @@ nav > a {
 div.about_us {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.about_us img {
+    border: 2px dotted black;
+    width: 300px;
+
+}
+
+.my_game {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    flex-direction: column;
+    width: max-content;
+    text-align: center;
 }
