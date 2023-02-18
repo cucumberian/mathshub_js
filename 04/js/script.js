@@ -8,11 +8,7 @@ const userTask = gameElements[1];
 const userAnswer = gameElements[2];
 const btnGame = gameElements[3]; // = document.querySelector('#my_game>button');
 
-
-let random1 = Math.round(Math.random() * 10);    // генерация
-let random2 = Math.round(Math.random() * 10);
-
-
+const game_img = document.getElementById('game_image');
 
 /* 
 ИГРА
@@ -28,44 +24,95 @@ let random2 = Math.round(Math.random() * 10);
 */
 
 const initGame = () => {
-    title.innerText = "Игра";
+    title.innerText = "Игра NumFu";
     btnGame.innerText = "Начать игру";
-    userAnswer.disabled = true; // делаем неактивным элемент ввода ответа
+    userAnswer.hidden = true; // делаем неактивным элемент ввода ответа
+    cleanGameImage();   
+    game_img.classList.add('start_pic');
 };
+
+function cleanGameImage () {
+    game_img.classList = [];
+    game_img.classList.add('game_pic');
+}
+
+function setGameImage () {
+    if (gameState['taskInProcess']) {
+        game_img.classList.add('question_pic');
+    }
+}
+
+const gameState = {
+    'taskInProcess': false,
+    'rightAnswer': null
+}
+
+const toggleGameState = () => {
+    gameState['taskInProcess'] = !gameState['taskInProcess'];
+}
+
+const getRandomNumIntRange = (min=0, max=100) => {
+    const randomNum = Math.round(Math.random() * (max-min) + min);    // генерация
+    return randomNum;
+}
+
 
 initGame();
 
 
-const gameState = {
-    'taskInProcess': false,
-    'rightAnswer': null,
-    'rand1': null,
-    'rand2': null,
-    'operation': null
+const getTask = () => {
+    // const randomNum1 = getRandomNumIntRange(0, 100);
+    // const randomNum2 = getRandomNumIntRange(0, 100);
+
+    // let symbol;
+    // if (Math.random() > 0.5) {
+    //     symbol = '+';
+    // } 
+    // else {
+    //     symbol = '-';
+    // }
+
+    const symbol = (Math.random() > 0.5) ? '+' : '-';
+    const task = `${getRandomNumIntRange(0, 100)} ${symbol} ${getRandomNumIntRange(0, 100)}`;
+    gameState['rightAnswer'] = eval(task);
+    return task;
 }
 
+
+
+
 btnGame.addEventListener('click', () => {
-    gameState['taskInProcess'] = !gameState['taskInProcess'];
-
-    if (gameState['taskInProcess']) { // если игра началась
-        roll_dice();
-        let operation_text = (gameState['operation']) ? '+' : '-';
-        let game_task = `Сколько будет ${gameState['rand1']} ${operation_text} ${gameState['rand2']} ?`;
-        btnGame.innerText = "Ответить";
-        title.innerText = game_task;
-        userAnswer.disabled = false;    // активируем поле ввода
+    let new_img_class = 'question_pic';
+    if (!gameState.taskInProcess) {
+        title.innerText = "Посчитайте";
+        // генерация задачи и ответ
+        // const task = getTask();
+        //  показываю задачу пользователю
+        userTask.innerText = getTask();
+        userAnswer.hidden = false;
+        userAnswer.placeholder = "ваш ответ";
+        // меняю кнопку 
+        btnGame.innerText = "проверить";
     }
-    else { // если игра уже запущен и надо проверить ответ
-        let answer = Number.parseInt(userAnswer.value);
-        title.innerText = 'Неверно!';
-        if (answer === gameState['rightAnswer']) {
-            title.innerText = "Правильно!";
-        }
+    else {
+        // сравнить ответ пользователя с правильным
+        const isRight = +gameState['rightAnswer'] === +userAnswer.value; // нестрогое сравнение т.к. строка
+        // Вывести правильное значение и результат
+        userTask.innerText = `${userTask.innerText} = ${gameState['rightAnswer']}`;
+        title.innerText = (isRight) ? "Правильно" : "Неверно";
+        // смнеить название кнопки
+        btnGame.innerText = "Еще раз";
+        // очищение строки ввода
+        userAnswer.placeholder = userAnswer.value;
         userAnswer.value = '';
-        userAnswer.disabled = true;
-        btnGame.innerText = 'Начать заного';
-
+        // изменяем картинку
+        new_img_class = (isRight) ? 'win_pic' : 'lose_pic';
     }
+    // меняю состояние
+    toggleGameState();
+    // изменение картинки
+    cleanGameImage();
+    game_img.classList.add(new_img_class)
 });
 
 function roll_dice() {
@@ -73,4 +120,10 @@ function roll_dice() {
     gameState['rand2'] = Math.round(Math.random() * 10);
     gameState['operation'] = Math.random() > 0.5;
     gameState['rightAnswer'] = (gameState['operation']) ? gameState['rand1'] + gameState['rand2'] : gameState['rand1'] - gameState['rand2']
+}
+
+for(let i = 10; i < 35; i += 5) {
+
+    console.log(i);
+
 }

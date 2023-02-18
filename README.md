@@ -361,3 +361,15 @@ const gameState = {
     'rightAnswer': null
 }
 ```
+## flexbox
+
+container| item
+--|--
+flex-direction | align-self
+flex-wrap | flex-grow
+flex-flow | flex-shrink
+gap | flex-basis
+justify-content | flex
+align-items | order
+align-content | 
+
