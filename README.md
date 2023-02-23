@@ -1,3 +1,7 @@
+##
+Ссылки
+1) [https://habr.com/ru/post/244041/](https://habr.com/ru/post/244041/)
+2) 
 ## Занятие 1
 ##### [youtube](https://www.youtube.com/watch?v=_p4YM2VykZg)
 
@@ -373,3 +377,188 @@ justify-content | flex
 align-items | order
 align-content | 
 
+# 5.
+## Объектная модель
+window |||
+--|--|--
+**DOM** | **BOM** | **JavaScript**
+document object model | browser object model |  Объекты
+document | navigation | Массивы
+|| history |Функции 
+|| screen |
+| | location |
+
+К BOM также отнсоится объект `conform` `alert` и `prompt`.
+
+## `console.dir`
+Подходит для вывода объектов в виде иерархического дерева.
+`console.log()` используется для вывода простой текстовой информации, а `console.dir()` - для более подробной информации об объектах.
+## `querySelector` `querySelectorAll`
+Выбор элемента аналогично CSS селектору
+```javascript
+const element = document.querySelector('.mygame div');
+```
+`querySelector` вовзращвет первый подходящий элемент или `null`
+`querySelectorAll` возвращает коллекцию из элементов подходящих под селектор.   
+
+## Обработчики событий
+```javascript
+element.addEventListener(event, func);
+element.removeEventListener(event, func);
+```
+`click`
+`mousedown`/`mouseup`
+`mouseover`/`mouseout`
+`keydown`/`keyup`
+
+## Данные перчичны, отображение вторично.
+Все что отображается на странице, должно основываться на внутреннем состоянии.
+
+## tabindex
+При нажитии tab мы фокус переключается по элементам имеюшим свойство ввода. Порядок переключения определяется свосвом tabindex
+
+1) Какого тега не существует?
+
+- `link`
+- *`href`
+- `script`
+- `title`
+
+2) Выберите существующий тег
+
+- *`style`
+- `bottom`
+- `output`
+- `image`
+
+3) Как задать стиль тегу <div> с классом info и id = "choosed"
+
+- choosed {...}
+- * .info {...}
+- .div {...}
+- #info {...}
+
+4) 155 / 'a'
+- `undefined`
+- `NaN`
+- `Infinity`
+- `error`
+
+1) 5 ** '2'
+
+- error
+- 10
+- NaN
+- *25
+
+6) Какой оператор прибавляет к числу единицу?
+
+- `||`
+- * `++`
+- `&&`
+- `--`
+
+7) С какого слова начинается цикл?
+
+- `for`
+- * `do` - неверно
+- `while`
+- `if`
+
+8) `document.getElementById(“p1”).innerText = “Привет!”`
+
+- удаляет элемент в HTML
+- ищет элемент в HTML и удаляет в нём текст
+- * ищет элемент в HTML и меняет в нём текст
+- ищет элемент в HTML
+
+9) Какую функцию нужно использовать, чтобы пользователь мог ввести свой текст (ответ) в окошке?
+
+- alert
+- confirm
+- * prompt
+- console
+
+10) Что выведет консоль?
+
+`const userText = prompt("give me number!")`
+
+// пользователь отменил ввод
+
+`console.log(userText - "7")`
+
+- null-7
+- * -7
+- error
+- NaN
+
+11) Какую функцию нудно использовать, чтобы получить от пользователя булевое значение?
+
+- `alert`
+- `prompt`
+- `console`
+- * `confirm`
+  
+12) Что выведет консоль?
+
+```javascript
+const num = 21
+const result = (!null) ? (21 % 5) : ( 21 % 3)
+console.log(result)
+```
+- 4.2
+- * 1
+- 7
+- 0
+
+13) Что выведет консоль?
+```javascript
+console.log(getArr());
+function getArr() {
+    const result = [];
+    for (let i = 0; i < 3; i++) {
+        result.push(i + 5);
+    }
+    return result;
+}
+```
+- error
+- * [5, 6, 7]
+- undefined
+- ['05', '15', '25']
+
+14) 
+
+Что выведет консоль?
+
+console.log(getRandomLessTen())
+
+function getRandomLessTen() {
+
+    const num = 0
+
+    num += (Math.random * 10).toFixed()
+
+    return num
+
+}
+
+- undefined
+- случайное число от 0 до 1
+- случайное число от 0 до 10
+- error
+
+15) Что выведет консоль?
+```javascript
+const getRandomAnswer = (question) => {
+
+    return (Math.random() > 0.5) ? "YES!" : "No("
+
+}
+
+console.log("Всё будет хорошо?")
+```
+- "Всё будет хорошо?"
+- "YES!"
+- "No("
+- undefined
