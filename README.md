@@ -1,7 +1,7 @@
 ##
 Ссылки
 1) [https://habr.com/ru/post/244041/](https://habr.com/ru/post/244041/)
-2) 
+2) [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/) - Тест API
 ## Занятие 1
 ##### [youtube](https://www.youtube.com/watch?v=_p4YM2VykZg)
 
@@ -440,16 +440,16 @@ element.removeEventListener(event, func);
 
 4) 155 / 'a'
 - `undefined`
-- `NaN`
+- * `NaN`
 - `Infinity`
 - `error`
 
-1) 5 ** '2'
+5) 5 ** '2'
 
 - error
 - 10
 - NaN
-- *25
+- * 25
 
 6) Какой оператор прибавляет к числу единицу?
 
@@ -527,26 +527,20 @@ function getArr() {
 - undefined
 - ['05', '15', '25']
 
-14) 
-
-Что выведет консоль?
-
-console.log(getRandomLessTen())
+14) Что выведет консоль?
+```javascript
+console.log(getRandomLessTen());
 
 function getRandomLessTen() {
-
-    const num = 0
-
-    num += (Math.random * 10).toFixed()
-
-    return num
-
+    const num = 0;
+    num += (Math.random * 10).toFixed();
+    return num;
 }
-
+```
 - undefined
 - случайное число от 0 до 1
 - случайное число от 0 до 10
-- error
+- * error
 
 15) Что выведет консоль?
 ```javascript
@@ -562,3 +556,188 @@ console.log("Всё будет хорошо?")
 - "YES!"
 - "No("
 - undefined
+
+
+
+2)
+
+Что выведет консоль?
+
+const changeFunc = (num) => {
+
+    const result = (num / (Math.random() * 10)).toFixed
+
+}
+
+console.log(changeFunc(47))
+
+
+- 5
+- *undefined
+- NaN
+- error
+
+# 6 Запросы на сервер. Обработка данных. Github Pages
+
+Некоторые операции работают в асинхроном режиме.
+## Асинхронный код
+В javascript есть основной поток, в котором выполняется скрипт. Все асинхронные функции выпадают их этого потока и выполняются одновеменно с потоком. 
+Особенность асинхронного кода в том, что он выполняется только после синхроного кода.
+
+### `setTimeout(func, ms)`
+Однократно запускает указанныую функцию через указанный интервал времени.
+`...func`
+### `setInterval(func, ms)`
+Постояно запускает указанную `func` через указанный промежуток времени:
+`...func...func...func...func... и т.д.`
+Чтобы остановить интервал надо:
+```javascript
+const timeIsOut = () => {console.log('Время вышло!');}
+const time_out = setInterval(timeIsOut, 3000); // запусе интервала
+//
+clearInterval(time_out); // остановка интервала
+```
+
+Из-за того, что асинхронный код запускается после обычного, в следующем кода сообщение ASYNC выведется только после того, как пользователь нажмет соответствующую кнопку.
+```javascript
+setTimeout(() => {console.log('ASYNC');}, 0); 
+
+let isB = true;
+while (isB) {
+    isB = confirm('wait?');
+    console.log('ok');
+}
+```
+В javascript есть запросы к серверу fetch. Специальные сигналы CRUD, котоыре регулируют эти запросы.
+Для теста есть сайт https://jsonplaceholder.typicode.com/
+## json placeholder jsonplaceholder.typicode.com/
+
+## `fetch` и `json()` метод
+### chatgpt
+Обычно, когда мы делаем запрос на сервер с помощью объекта fetch, сервер возвращает нам ответ в формате Response. Чтобы получить данные из этого ответа, мы используем методы объекта Response, такие как text(), blob(), arrayBuffer() и formData().
+
+Однако, когда сервер возвращает нам данные в формате JSON, мы можем использовать метод .json(), чтобы получить эти данные в виде JavaScript-объекта.
+
+Например, если мы хотим получить список пользователей в формате JSON, мы можем сделать следующий запрос:
+```javascript
+fetch('https://jsonplaceholder.typicode.com/posts')
+  .then(response => response.json())
+  .then(data => {
+    // Обрабатываем данные
+  });
+```
+В этом примере мы отправляем запрос на сервер с помощью fetch(), получаем ответ в виде Response, затем вызываем метод .json() на этом объекте Response, чтобы получить данные в виде JavaScript-объекта. Затем мы обрабатываем эти данные в функции обратного вызова в методе .then().
+
+Таким образом, метод .json() позволяет получить данные в формате JSON и использовать их в JavaScript-коде.
+
+### `JSON.stringify(body)`
+Можно использовать JSON.stringify(data) для обработки полученных даных и преобразования их в строку.
+```javascript
+fetch('https://jsonplaceholder.typicode.com/posts')
+  .then(response => response.json())
+  .then(data => {
+    // Обрабатываем данные
+  });
+```
+#### chatgpt
+JSON.stringify() - это метод JavaScript, который преобразует объекты JavaScript в формат JSON (JavaScript Object Notation), то есть в строку, которую можно передать по сети или сохранить в файл.
+
+Метод JSON.stringify() принимает один обязательный аргумент - объект, который нужно преобразовать в формат JSON. Этот объект может содержать строки, числа, логические значения, массивы, объекты или null.
+
+Метод JSON.stringify() также принимает второй необязательный аргумент, который может быть функцией или массивом. Этот аргумент называется replacer и позволяет выбирать только те свойства объекта, которые нужно преобразовать в формат JSON.
+```json
+const person = {
+  name: 'John',
+  age: 30,
+  address: {
+    street: '123 Main St',
+    city: 'Anytown',
+    state: 'CA'
+  }
+};
+
+const json = JSON.stringify(person, ['name']);
+console.log(json);
+// {"name":"John"}
+```
+## `then`
+### chatgpt
+then() - это метод JavaScript, который применяется к промисам (Promise) и используется для обработки результатов асинхронных операций.
+
+Когда мы вызываем асинхронную функцию, она возвращает промис, который представляет собой обещание о том, что результат будет получен в будущем. Метод then() позволяет нам обработать этот результат, когда он будет готов.
+
+Метод then() принимает два аргумента: функцию обработки успешного результата (онеFulfilled) и функцию обработки ошибки (onRejected). Обе функции являются необязательными.
+
+Когда промис выполняется успешно, функция обработки успешного результата (onFulfilled) вызывается с результатом выполнения промиса в качестве единственного аргумента. В противном случае, когда промис завершается с ошибкой, вызывается функция обработки ошибки (onRejected), которая принимает объект ошибки в качестве аргумента.
+
+Вот пример использования метода then() с промисом:
+```javascript
+function getData() {
+  return fetch('https://api.example.com/data')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+}
+```
+В этом примере мы вызываем асинхронную функцию fetch(), чтобы получить данные из API. Затем мы вызываем метод then(), чтобы обработать результаты. Если ответ от сервера не был успешным, мы генерируем ошибку, используя оператор throw. Если ответ был успешным, мы парсим его в формат JSON, используя метод response.json(), и выводим его содержимое в консоль.
+
+В случае ошибки в любой точке цепочки обработки результатов, метод catch() позволяет обработать эту ошибку, используя функцию обработки ошибки (onRejected).
+
+## CRUD
+В методах create put и patch кроме url передаётся ее и объект в котором содержатся данные
+
+## `get` vs `post`
+по умолчанию оспользуется метод `get`
+Запос на создание контента может выглядеть следующим образом:
+```javascript
+fetch(
+    'https://jsonplaceholder.typicode.com/posts',
+    {
+        method: 'post',
+        body: JSON.stringify({
+            title: 'foo title',
+            body: 'foo text main body',
+            userId: 1
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    }
+)
+    .then(response => {return response.json()})
+    .then(data => console.log(JSON.stringify(data)));
+```
+В результате возвращается сервером ответ, например ответ содержащий это тело и присвоенный посту id.
+
+## GitHub Pages
+
+
+# Hints
+## создание объектов
+при создании объектов можно воспольщоваться более компактной формой записи, если переменные со значениями свойств совпадают с названиями полей:
+```javascript
+const body = {
+    title: title,
+    body: body,
+    userId: userId,
+};
+```
+можно заменить на
+```javascript
+const body = {
+   title,
+   body,
+   userId, 
+};
+```
+## запятые в последней строчке объекта
+При описании объекта ставьте запятие в последней строчке, чтобы при добавлении нового свойства в объект в гитхабе изменялась или мерджилось на 1 строчку меньше.
