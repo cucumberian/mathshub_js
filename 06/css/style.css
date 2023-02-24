@@ -14,7 +14,14 @@
     font-family: 'Lora', serif;
 }
 
-
+button {
+    background-color: hsla(47, 18%, 85%, 0.866);
+    padding: 0 20px;
+    border-radius: 10px;
+    margin: 5px;
+    border: none;
+    min-height: 30px;
+}
 
 span {
     font-size: 15px;
@@ -22,9 +29,40 @@ span {
 
 
 header {
-    background-color :rgb(224, 224, 224);
-    height: 50px;
-    display: none;
+    /* height: 50px; */
+    display: flex;
+    justify-content: center;
+    /* gap: 20px; */
+    position: fixed;
+}
+
+header > nav {
+    display: flex;
+    flex-direction: column;
+    /* background-color :rgb(224, 224, 224); */
+}
+
+nav {
+    /* border: 5px dotted black; */
+    height: inherit;
+    display: flex;
+    /* justify-content: start; */
+    align-items: center;  
+    
+}
+
+nav > a {
+    background-color: hsla(0, 0%, 0%, 0.05);
+    text-align: center;
+    width: 100%;
+    padding: 10px auto;
+    text-decoration: none;
+    color: black;
+    padding: 5px 30px;
+    font-size: 20px;
+}
+nav > a:hover {
+    background-color: hsla(0, 0%, 0%, 0.1);
 }
 
 footer {
@@ -32,22 +70,6 @@ footer {
     padding: 1em;
     text-align: center;
     margin: auto;
-}
-
-
-nav {
-    /* border: 5px dotted black; */
-    height: inherit;
-    display: flex;
-    /* justify-content: start; */
-    align-items: center;    
-}
-
-nav > a {
-    text-decoration: none;
-    color: black;
-    padding: 0 30px;
-    font-size: 20px;
 }
 
 main > * {
@@ -115,9 +137,6 @@ div.about_us-description>p {
 
 .my_game button {
     max-width: max-content;
-    background-color: hsla(47, 18%, 85%, 0.866);
-    padding: 0 20px;
-    border-radius: 10px;
 }
 
 .game_pic {
@@ -202,7 +221,6 @@ div.post {
 
 button#load_posts {
     margin: auto;
-    padding: 5px 10px;
     width: 100px;
 }
 .posts_block-container > *{
@@ -212,7 +230,7 @@ button#load_posts {
 #posts_block p {
     color: hsl(0, 0%, 12%);
     /* box-shadow: 0px 0px 10px -5px hsl(232, 5%, 30%); */
-    background-color: hsla(221, 48%, 91%, 0.866);
+    background-color: hsla(240, 3%, 94%, 0.67);
     margin-top: 20px;
     padding: 20px 40px;
     border-radius: 10px;
