@@ -27,6 +27,8 @@
 - [Хабр. Полное руководство по Flexbox](https://habr.com/ru/post/467049/)
 - [Как работает CSS Flexbox: наглядное введение в систему компоновки](https://tproger.ru/translations/how-css-flexbox-works/)
 - [Stepik: JavaScript для начинающих](https://stepik.org/course/2223/syllabus)
+- [Если хочется пойти по академическому пути изучения JS, а также погрузиться в нюансы асинхронности, рекомендую видео-лекции на youtube Тимура Шемсединова. Основы программирования с примерами на JavaScript (1 часть)](https://youtube.com/playlist?list=PLHhi8ymDMrQZad6JDh6HRzY1Wz5WB34w0)
+- (Чтобы поупражняться неплох https://www.freecodecamp.org/ Причем там не только фронтэнд, но и смежные темы (React, SQL и пр.))[https://www.freecodecamp.org/]
 
 # Занятие 1
 [youtube](https://www.youtube.com/watch?v=_p4YM2VykZg)
